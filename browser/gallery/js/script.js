@@ -9,7 +9,7 @@ const backward = document.getElementById('prevPhoto');
 let counter = 0;
 slider.src = images[counter];
 
-forward.onclick = function() {
+forward.onclick = function () {
   counter++;
   if (counter === images.length) {
     counter = 0;
@@ -17,7 +17,7 @@ forward.onclick = function() {
   slider.src = images[counter];
 }
 
-backward.onclick = function() {
+backward.onclick = function () {
   counter--;
   if (counter < 0) {
     counter = images.length - 1;
