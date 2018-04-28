@@ -49,5 +49,13 @@ btnBack.onclick = () => {
 function changeTrack() {
   audio.src = playList[playTrack].source;
   player.getElementsByClassName('title')[0].title = playList[playTrack].title;
-  audio.play();
+  if (player.classList.contains('play')) {
+    audio.play();
+  } else {
+    audio.pause();    
+  }
+}
+
+audio.onended = () => {
+  player.classList.remove('play');
 }
