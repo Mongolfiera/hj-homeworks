@@ -26,6 +26,7 @@ function updateSrc() {
 }
 
 function updateMode(event) {
+  event.preventDefault();  
   if (event.shiftKey) {
   	mode = 'lower';
   } else if (event.altKey) {
@@ -33,6 +34,6 @@ function updateMode(event) {
   } else {
   	mode = 'middle';
   }  
-  piano.classList.remove('lower', 'middle', 'higher')
+  piano.classList.remove('lower', 'middle', 'higher');
   piano.classList.add(mode);
 }
