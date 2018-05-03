@@ -1,7 +1,7 @@
 'use strict'
 
 const contacts = JSON.parse(loadContacts());
-const contactsList = document.getElementsByClassName('contacts-list')[0];
+const contactsList = document.querySelector('.contacts-list');
 let output = '';
 
 for (const contact of contacts) {
