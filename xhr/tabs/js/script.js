@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const tabs = document.querySelectorAll('.tabs a');
 const content = document.querySelector('#content');
 const preloader = document.querySelector('#preloader');
