@@ -1,3 +1,4 @@
+'use strict';
 const todoList = document.querySelector('.list-block');
 const todos = todoList.querySelectorAll('li input');
 const output = todoList.querySelector('h3 output');
