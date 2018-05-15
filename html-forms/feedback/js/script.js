@@ -31,7 +31,6 @@ window.addEventListener('DOMContentLoaded', () => {
   	  this.value = this.value.replace(/\D/, '');
   	}
   	document.getElementById(this.name).value = this.value;
-  	console.log(document.getElementById(this.name));
   }
 
   function toggleBtns(event) {
