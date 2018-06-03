@@ -11,35 +11,28 @@ function loadData(url) {
 }
 
 function showRecipe(recipe) {
-  document.querySelector('[data-pic]').style = `background-image: url(${recipe.pic})`;
-  document.querySelector('[data-title]').textContent = recipe.title;
-  document.querySelector('[data-ingredients]').textContent = recipe.ingredients.join(', ');  
-  return `https://neto-api.herokuapp.com/food/42/rating`;
-}
+  document.querySelector('[data-pic]').style = `background-image: url(${recipe[0].pic})`;
+  document.querySelector('[data-title]').textContent = recipe[0].title;
+  document.querySelector('[data-ingredients]').textContent = recipe[0].ingredients.join(', ');
 
-function showRating(rating) {
-  document.querySelector('[data-rating]').textContent = rating.rating.toFixed(2);
-  document.querySelector('[data-star]').style = `width: ${rating.rating * 10}%`;
-  document.querySelector('[data-votes]').textContent = `(${rating.votes} оценок)`;
-  return `https://neto-api.herokuapp.com/food/42/consumers`;  
-}
+  document.querySelector('[data-rating]').textContent = recipe[1].rating.toFixed(2);
+  document.querySelector('[data-star]').style = `width: ${recipe[1].rating * 10}%`;
+  document.querySelector('[data-votes]').textContent = `(${recipe[1].votes} оценок)`;
 
-function showConsumers(consumersList) {
-  consumersList.consumers.forEach((consumer) => {
-  	  const consumerElement = document.createElement('img');
-  	  consumerElement.src = consumer.pic;
-  	  consumerElement.title = consumer.name;
-  	  document.querySelector('[data-consumers]').appendChild(consumerElement)
-  })	
+  recipe[2].consumers.forEach((consumer) => {
+  	  const elem = document.createElement('img');
+  	  elem.src = consumer.pic;
+  	  elem.title = consumer.name;
+  	  document.querySelector('[data-consumers]').appendChild(elem)
+  });
   const moreConsumers = document.createElement('span');
-  moreConsumers.textContent = `(+${consumersList.total - consumersList.consumers.length})`;
+  moreConsumers.textContent = `(+${recipe[2].total - recipe[2].consumers.length})`;
   document.querySelector('[data-consumers]').appendChild(moreConsumers);
 }
 
-loadData('https://neto-api.herokuapp.com/food/42')
+Promise.all([loadData('https://neto-api.herokuapp.com/food/42'),
+			loadData('https://neto-api.herokuapp.com/food/42/rating'),
+			loadData('https://neto-api.herokuapp.com/food/42/consumers')
+           ])
   .then(showRecipe)
-  .then(loadData)
-  .then(showRating)
-  .then(loadData)
-  .then(showConsumers)
   .catch(error => console.log(error));
