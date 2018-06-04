@@ -35,6 +35,7 @@ connection.addEventListener('message', event => {
   	  loading.parentNode.removeChild(loading);		
   	}
   	messagesContent.appendChild(clone(messageReceived, event.data, showTime()));
+  	messagesContent.style.top = (messagesContent.clientHeight - messagesContent.scrollHeight) + 'px';    
   }
 });
 
@@ -47,7 +48,8 @@ connection.addEventListener('close', (event) => {
 messageSubmitBtn.addEventListener('click', (event) => {
   event.preventDefault();
   if (messageInput.value) {
-  messagesContent.appendChild(clone(messageSent, messageInput.value, showTime()));   	
+    messagesContent.appendChild(clone(messageSent, messageInput.value, showTime()));
+  	messagesContent.style.top = (messagesContent.clientHeight - messagesContent.scrollHeight) + 'px';    
   }
   connection.send(messageInput.value); 
   messageInput.value = '';
