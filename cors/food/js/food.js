@@ -19,7 +19,7 @@ function showRecipe(recipe) {
   document.querySelector('[data-star]').style = `width: ${recipe[1].rating * 10}%`;
   document.querySelector('[data-votes]').textContent = `(${recipe[1].votes} оценок)`;
 
-  recipe[2].consumers.forEach((consumer) => {
+  recipe[2].consumers.forEach(consumer => {
   	  const elem = document.createElement('img');
   	  elem.src = consumer.pic;
   	  elem.title = consumer.name;
