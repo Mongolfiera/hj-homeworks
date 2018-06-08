@@ -8,7 +8,7 @@ const tab = tabsNav.firstElementChild;
 for (const article of articles) {
   const newTab = tab.cloneNode(true);
   newTab.querySelector('a').textContent = article.dataset.tabTitle;
-  newTab.querySelector('a').className = article.dataset.tabIcon;
+  newTab.querySelector('a').className = `fa ${article.dataset.tabIcon}`;
   tabsNav.appendChild(newTab);
   article.classList.add('hidden');
 }
