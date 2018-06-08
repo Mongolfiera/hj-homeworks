@@ -10,10 +10,10 @@ slideList[0].classList.add('slide-current');
 prev.classList.add('disabled');
 first.classList.add('disabled');
 
-next.addEventListener('click', event => moveSlide(1));
-prev.addEventListener('click', event => moveSlide(-1));
-last.addEventListener('click', event => moveSlide(10));
-first.addEventListener('click', event => moveSlide(-10));
+next.addEventListener('click', event => moveSlide('next'));
+prev.addEventListener('click', event => moveSlide('prev'));
+last.addEventListener('click', event => moveSlide('last'));
+first.addEventListener('click', event => moveSlide('first'));
 
 function moveSlide(move) {
   if (event.target.classList.contains('disabled')) {
@@ -22,16 +22,16 @@ function moveSlide(move) {
   const slideCurrent = slider.querySelector('.slide-current');
   let slideNext = {};
   switch (move) {
-    case 1: 
+    case 'next': 
       slideNext = slideCurrent.nextElementSibling;
       break;
-    case -1: 
+    case 'prev': 
       slideNext = slideCurrent.previousElementSibling;
       break;
-    case 10: 
+    case 'last': 
       slideNext = slideCurrent.parentElement.lastElementChild;
       break;
-    case -10: 
+    case 'first': 
       slideNext = slideCurrent.parentElement.firstElementChild;
       break;      
   }
