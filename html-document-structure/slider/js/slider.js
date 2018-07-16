@@ -5,15 +5,23 @@ const next = slider.querySelector('a[data-action = "next"]');
 const last = slider.querySelector('a[data-action = "last"]');
 const prev = slider.querySelector('a[data-action = "prev"]');
 const first = slider.querySelector('a[data-action = "first"]');
+const sliderNav = slider.querySelector('.slider-nav');
+
+sliderNav.addEventListener('click', event => {
+  if (event.target.nodeName !== 'A' || event.target.classList.contains('disabled')) {
+    return;
+  };
+  moveSlide(event.target.dataset.action);
+})
 
 slideList[0].classList.add('slide-current');
 prev.classList.add('disabled');
 first.classList.add('disabled');
 
-next.addEventListener('click', event => moveSlide('next'));
-prev.addEventListener('click', event => moveSlide('prev'));
-last.addEventListener('click', event => moveSlide('last'));
-first.addEventListener('click', event => moveSlide('first'));
+// next.addEventListener('click', event => moveSlide('next'));
+// prev.addEventListener('click', event => moveSlide('prev'));
+// last.addEventListener('click', event => moveSlide('last'));
+// first.addEventListener('click', event => moveSlide('first'));
 
 function moveSlide(move) {
   if (event.target.classList.contains('disabled')) {
