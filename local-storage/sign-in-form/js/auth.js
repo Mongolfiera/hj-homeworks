@@ -3,6 +3,12 @@
 const check = document.getElementById('check');
 const signInInputs = document.getElementsByClassName('input');
 
+document.addEventListener('DOMContentLoaded', () => {
+  for (let input of signInInputs) {
+ 	input.value = localStorage.getItem(input.name);
+ 	input.innerTax = input.value;
+  }
+});
 
 for (let input of signInInputs) {
   input.addEventListener('change', inputHandler);
@@ -18,7 +24,9 @@ function checkToggle(event) {
     check.value = 1;
     const dataCopy = new FormData(form);
     for (let [k,v] of dataCopy) {
-      localStorage[k] = v;
+      if (v) {
+      	localStorage[k] = v;
+      }
     }
   } else {
     check.value = 0;
@@ -42,6 +50,7 @@ function sendData(event) {
   }
 
   fetch(sendTo, {
+//    body: data, - почему-то так не работает??? 	  
   	body: JSON.stringify(dataList), 
   	credentials: 'same-origin',	
   	method: 'POST',
