@@ -14,21 +14,18 @@ let kx = 3;
 let ky = 3;
 let timer;
 
-window.addEventListener('load', init);
-
-function init() {
+window.addEventListener('load', () => {
   eyeCoords = eye.getBoundingClientRect();
   leftDist = eyeCoords.left;
   rightDist = document.documentElement.clientWidth - eyeCoords.right;
   topDist = eyeCoords.top;
   bottomDist = document.documentElement.clientHeight - eyeCoords.bottom;
-}
+});
 
 document.addEventListener('mousemove', event => {
 	mouseCoords.x = event.clientX;
 	mouseCoords.y = event.clientY;
 });
-
 
 function getPupilSize() {
   if (mouseCoords.x < eyeCoords.left) {
