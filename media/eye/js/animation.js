@@ -3,16 +3,26 @@
 const eye = document.querySelector('.big-book__eye');
 const pupil = document.querySelector('.big-book__pupil');
 
-const eyeCoords = eye.getBoundingClientRect();
-const leftDist = eyeCoords.left;
-const rightDist = document.documentElement.clientWidth - eyeCoords.right;
-const topDist = eyeCoords.top;
-const bottomDist = document.documentElement.clientHeight - eyeCoords.bottom;
+let eyeCoords = {};
+let leftDist;
+let rightDist;
+let topDist;
+let bottomDist;
 
 const mouseCoords = {x: 0, y: 0};
 let kx = 3;
 let ky = 3;
 let timer;
+
+window.addEventListener('load', init);
+
+function init() {
+  eyeCoords = eye.getBoundingClientRect();
+  leftDist = eyeCoords.left;
+  rightDist = document.documentElement.clientWidth - eyeCoords.right;
+  topDist = eyeCoords.top;
+  bottomDist = document.documentElement.clientHeight - eyeCoords.bottom;
+}
 
 document.addEventListener('mousemove', event => {
 	mouseCoords.x = event.clientX;
@@ -41,4 +51,4 @@ function tick() {
   timer = requestAnimationFrame(tick);
 }
 
-timer = requestAnimationFrame(tick);  
+timer = requestAnimationFrame(tick);
