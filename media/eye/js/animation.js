@@ -46,8 +46,8 @@ function getPupilSize() {
 
 function tick() {
   pupil.style.setProperty('--pupil-size', getPupilSize());
-  pupil.style.setProperty('--pupil-x', `${30 * (2 * mouseCoords.x + eyeCoords.width - document.documentElement.clientWidth) / document.documentElement.clientWidth}px`);
-  pupil.style.setProperty('--pupil-y', `${30 * (2 * mouseCoords.y + eyeCoords.height - document.documentElement.clientHeight) / document.documentElement.clientHeight}px`);
+  pupil.style.setProperty('--pupil-x', `${30 * (mouseCoords.x / (eyeCoords.left + eyeCoords.width / 2) - 1)}px`);
+  pupil.style.setProperty('--pupil-y', `${30 * (mouseCoords.y / (eyeCoords.top + eyeCoords.height / 2) - 1)}px`);
   timer = requestAnimationFrame(tick);
 }
 
