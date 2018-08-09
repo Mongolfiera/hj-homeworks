@@ -35,11 +35,15 @@ function getPupilSize() {
     kx = 1 + mouseCoords.x / leftDist * 2;
   } else if (mouseCoords.x > eyeCoords.right) {
     kx = 3 - (mouseCoords.x - eyeCoords.right) / rightDist * 2;
+  } else {
+    kx = 3;
   }
   if (mouseCoords.y < eyeCoords.top) {
     ky = 1 + mouseCoords.y / topDist * 2;
   } else if (mouseCoords.y > eyeCoords.bottom) {
     ky = 3 - (mouseCoords.y - eyeCoords.bottom) / bottomDist * 2;
+  } else {
+    ky = 3;
   }
   return Math.sqrt(kx * kx / 2 + ky * ky / 2);
 }
